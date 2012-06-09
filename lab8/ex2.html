@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script type="text/javascript" charset="utf-8">
+        window.onload = function() {
+            function changeListItem(event) {
+                event.target.innerHTML = "Clicked Item";
+            }
+
+        var items = document.getElementsByTagName('li');
+        for(var x = 0; x < items.length; x++) {
+            items[x].addEventListener('click', changeListItem, false);
+        }
+    }
+    </script>
+</head>
+<body>
+    <ul>
+    	<li>item1</li>
+    	<li>item2</li>
+    	<li>item3</li>
+    	<li>item4</li>
+    </ul>
+</body>
+</html>
