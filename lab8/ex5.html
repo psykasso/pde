@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script type="text/javascript" charset="utf-8">
+        function addMyTag() {
+            var container = document.getElementById('container');
+            var selectedTag = document.getElementById("tagSelection").value;
+            var selectedColor = document.getElementById("colorSelection").value;
+            var selectedText = document.getElementById("textSelection").value;
+
+            var newElement = document.createElement(selectedTag);
+            newElement.setAttribute('style', 'color:' + selectedColor);
+            newElement.innerHTML = selectedText;
+
+            container.appendChild(newElement);
+        }
+    </script>
+</head>
+<body>
+	<select id="tagSelection" name="">
+		<option value="h1">h1</option>
+		<option value="h2">h2</option>
+		<option value="h3">h3</option>
+		<option value="p">p</option>
+		<option value="span">span</option>
+	</select>
+    <select id="colorSelection" name="">
+    	<option value="red">red</option>
+    	<option value="green">green</option>
+    	<option value="blue">blue</option>
+    </select>
+    <input type="text" id="textSelection" value="">
+    <button onClick="addMyTag()">Click Me!</button>
+    <br>
+    <div id="container">
+        
+    </div>
+</body>
+</html>

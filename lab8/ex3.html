@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script type="text/javascript" charset="utf-8">
+        var count = 0;
+        window.onload = function() {
+            
+            function addPicture(event) {
+                event.target.innerHTML = '<img src="banana.png" height=20 />'
+            }
+
+            function changeListItem(event) {
+                if( count < 3 ) {
+                    event.target.innerHTML = "Clicked Item";
+                    count++;
+                }
+                else {
+                    alert("Changing Event Listener!");
+                    var items = document.getElementsByTagName('li');
+                    for(var x = 0; x < items.length; x++) {
+                        items[x].removeEventListener('click', changeListItem, false);
+                        items[x].addEventListener('click', addPicture , false);
+                    }
+                    
+                }
+            }
+
+            var items = document.getElementsByTagName('li');
+            for(var x = 0; x < items.length; x++) {
+                items[x].addEventListener('click', changeListItem, false);
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+    	<li>item1</li>
+    	<li>item2</li>
+    	<li>item3</li>
+    	<li>item4</li>
+    	<li>item5</li>
+    	<li>item6</li>
+    </ul>
+</body>
+</html>

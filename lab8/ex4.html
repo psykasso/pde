@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <style type="text/css" media="screen">
+        .linkClass {
+            color: yellow;
+            background-color: red;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        function addStyleFunction() {
+            var links = document.getElementsByTagName('a');
+            for( var x = 0; x < links.length; x++ ) {
+                var attribute = document.createAttribute('class');
+                attribute.nodeValue = "linkClass";
+                links[x].setAttributeNode(attribute);
+            }
+        }
+    </script>
+</head>
+<body>
+	<a href="#">Link1</a>
+	<a href="#">Link2</a>
+	<a href="#">Link3</a>
+	<a href="#">Link4</a>
+	<a href="#">Link5</a>
+	<a href="#">Link6</a>
+	<a href="#">Link7</a>
+	<a href="#">Link8</a>
+	<a href="#">Link9</a>
+	<a href="#">Link10</a>
+    <button type="button" onclick="addStyleFunction()">Click Me!</button>
+</body>
+</html>

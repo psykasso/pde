@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script type="text/javascript" charset="utf-8">
+        window.onload = function () {
+            function displayInfo(event) {
+                document.getElementById('selectedTagName').value = event.target.tagName;
+                document.getElementById('selectedTagValue').value = event.target.innerHTML;
+            }
+
+            var parentContainer = document.getElementById("container");
+            var items = parentContainer.children;
+
+            for(var x = 0; x < items.length; x++ ) {
+                items[x].addEventListener('mouseover', displayInfo, false);
+            }
+        }
+    </script>
+</head>
+<body>
+	<input type="text" id ="selectedTagName" value="">
+    <textarea id="selectedTagValue" name="" rows="10" cols="30"></textarea>
+
+    <div id="container">
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <a href="#">The link that goes nowhere ...</a>
+        <div id="dummyDiv">
+            <p>Inside the dummy div</p>
+        </div>
+        <p>A paragraph</p>
+    </div>
+</body>
+</html>
