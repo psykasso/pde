@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script type="text/javascript" charset="utf-8">
+        function addStuff(obj) {
+            console.log(obj);
+            var linkTRS = obj.previousSibling.children;
+            var linkContainer = document.getElementById("linkContainer");
+
+            var thaList = document.createElement(document.getElementById("list_type").value);
+            linkContainer.appendChild(thaList);
+
+            for(var i=0; i< linkTRS.length; i++) {
+                var newLink = document.createElement('a');
+                newLink.innerHTML = linkTRS[i].children[0].children[0].value;
+                var newHREF = linkTRS[i].children[1].children[0].value;
+                newLink.setAttribute("href", newHREF);
+
+                var newLI = document.createElement('li');
+                newLI.appendChild(newLink);
+
+                thaList.appendChild(newLI);
+
+            }
+
+            
+        }
+        function doStuff() {
+            var parentContainer = document.getElementById("container");
+
+            var count = document.getElementById("input_list_count").value;
+
+            var parentTable = document.createElement("table");
+
+            parentContainer.appendChild(parentTable);
+
+            for(var i = 0; i<count; i++ ) {
+                var newTR = document.createElement("tr");
+                parentTable.appendChild(newTR);
+
+                var newTH = document.createElement("th");
+                newTH.innerHTML = '<input type="text">';
+                newTR.appendChild(newTH);
+
+
+
+                newTH = document.createElement("th");
+                newTH.innerHTML = '<input type="text">';
+                newTR.appendChild(newTH);
+
+            }
+            var newButton = document.createElement("button");
+            newButton.setAttribute("onclick", "addStuff(this)");
+            newButton.setAttribute("id", "addLinksButton");
+            newButton.innerHTML = "Add Links";
+            parentContainer.appendChild(newButton);
+            
+                
+        }
+    </script>
+</head>
+<body>
+	<select name="list_type" id="list_type">
+	    <option value="ul">ul</option>
+	    <option value="ol">ol</option>
+	</select>
+    <input type="text" id="input_list_count" value="">
+     <input type="button" onclick="doStuff()" value="Fire!">
+     <div id="container">
+         
+     </div>
+     <div id="linkContainer">
+         
+     </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <script type="text/javascript" charset="utf-8">
+        words=new Array();
+        words[0]="zero";
+        words[1]="one";
+        words[2]="two";
+        words[3]="three";
+        words[4]="four";
+        words[5]="five";
+        words[6]="six";
+        words[7]="seven";
+        words[8]="eight";
+        words[9]="nine";
+
+        var consonants=new Array();
+        consonants[0]="q";
+        consonants[1]="w";
+        consonants[2]="r";
+        consonants[3]="t";
+        consonants[4]="p";
+        consonants[5]="s";
+        consonants[6]="d";
+        consonants[7]="f";
+        consonants[8]="g";
+        consonants[9]="h";
+        consonants[10]="j";
+        consonants[11]="k";
+        consonants[12]="l";
+        consonants[13]="z";
+        consonants[14]="x";
+        consonants[15]="c";
+        consonants[16]="v";
+        consonants[17]="b";
+        consonants[18]="n";
+        consonants[19]="m";
+        
+        var vowels=new Array();
+
+        vowels[0]="e";
+        vowels[1]="y";
+        vowels[2]="u";
+        vowels[3]="i";
+        vowels[4]="o";
+        vowels[5]="a";
+
+        var totalWords = 0;
+
+        function clearStuff() {
+            document.getElementById("input1").value = "";
+        }
+
+
+        function addLetter(obj) {
+            var inputText = document.getElementById("input1");
+            if ( obj.style.backgroundColor != "red") {
+                inputText.value += obj.innerHTML;
+                obj.setAttribute("style", "background-color: red");
+            }
+
+            var i;
+
+            for ( i=0; i<words.length; i++) {
+                if (inputText.value == words[i] ) {
+                    inputText.setAttribute("style", "background-color: green");
+                    totalWords++;
+
+                    setTimeout(function() {
+                            inputText.setAttribute("style", "background-color: none");
+                            },100);
+                    inputText.value = "";
+                }
+
+            }
+        }
+
+        function doStuff() {
+            var activeButton = document.getElementById("start_button");
+
+            if(activeButton.value == "Τερματισμος") {
+                alert("Πετυχημένες λέξεις: " + totalWords);
+                totalWords = 0;
+                activeButton.value = "Εναρξη";
+            }
+            else {
+
+                activeButton.value = "Τερματισμος";
+
+                var table1 = document.getElementById("table1");
+                
+                var i = 0;
+                for( i = 0; i < 2; i++) {
+                    var newTR = document.createElement("tr");
+                    var j = 0;
+                    for( j = 0; j < 5; j++ ) {
+                        var newTD = document.createElement("td");
+                        newTR.appendChild(newTD);
+                        newTD.setAttribute("onclick","addLetter(this)");
+                        newTD.innerHTML = vowels[Math.floor(vowels.length*Math.random())];
+                    }
+                    table1.appendChild(newTR);
+                }
+                
+                var table2 = document.getElementById("table2");
+
+                for( i = 0; i < 4; i++) {
+                    var newTR = document.createElement("tr");
+                    var j = 0;
+                    for( j = 0; j < 5; j++ ) {
+                        var newTD = document.createElement("td");
+                        newTR.appendChild(newTD);
+                        newTD.setAttribute("onclick","addLetter(this)");
+                        newTD.innerHTML = consonants[Math.floor(consonants.length*Math.random())];
+                    }
+                    
+                    table2.appendChild(newTR);
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="start_button" onclick="doStuff()" value="Εναρξη">
+    <input type="button" id="clear_text" onclick="clearStuff()" value="Καθαρισμος">
+    <table id="table1" border="1px solid black">
+    </table>
+    <table id="table2" border="1px solid black">
+    </table>
+    <input type="text" id="input1" value="">
+	
+</body>
+</html>
